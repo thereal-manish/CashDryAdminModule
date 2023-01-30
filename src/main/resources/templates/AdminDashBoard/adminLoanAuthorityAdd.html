@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Add Loan Authority</title>
+<link rel="shortcut icon" type="image/png" th:href="@{/images/cashdry.png}"/>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background-image: url("/images/bgConf.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      .container {
+        margin-top: 8%;
+        box-shadow: 10px 10px 10px 10px rgba(125, 125, 125, 0.406);
+        width: 20%;
+        justify-content: center;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+      }
+      .formclass {
+        margin: 20px;
+      }
+      .errors {
+	color: red;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Add New Loan Authority</h3>
+
+      <form
+        th:action="@{/admin/addinglaa}"
+        th:object="${loanAuthority}"
+        method="post"
+        class="formclass"
+        onsubmit="result()"
+      >
+        <input
+          type="text"
+          name="loanAuth_Id"
+          class="form-control mb-4"
+          placeholder="Loan Authority ID"
+          required
+        />
+
+        <input
+          type="text"
+          name="loanAuth_name"
+          class="form-control mb-4"
+          placeholder="Enter Name"
+          required
+        />
+
+        <input
+          type="email"
+          name="loanAuth_email"
+          class="form-control mb-4"
+          placeholder="Enter email"
+          required
+        />
+
+        <input
+          type="text"
+          name="loanAuth_address"
+          class="form-control mb-4"
+          placeholder="Enter address"
+          required
+        />
+
+        <input
+          type="number"
+          name="loanAuth_phoneNumber"
+          class="form-control mb-4"
+          placeholder="Enter PhoneNumber"
+          required
+        />
+        <input
+          type="text"
+          name="loanAuth_department"
+          class="form-control mb-4"
+          placeholder="Enter Department"
+          required
+        />
+
+        <input
+          type="password"
+          id="loanAuth_password"
+          name="loanAuth_password"
+          class="form-control mb-4"
+          placeholder="Enter Password"
+          th:field="*{loanAuth_password}"
+        />
+        
+				<div class="small">
+						<small th:if="${#fields.hasErrors('loanAuth_password')}"
+							th:errorclass="errors" th:errors="*{loanAuth_password}"></small> <small
+							th:text="${invalidpassword}"></small>
+					</div>
+
+        <button type="submit" class="btn btn-primary col-4 mb-1">Save</button>
+        <input type="hidden" />
+      </form>
+    </div>
+    <script type="text/javascript">
+    function result() {
+    	  alert("Record Successfully Added");
+    	}</script>
+  </body>
+</html>
